@@ -1,3 +1,3 @@
 def main():
     print("Hi!")
-    return None
+    return 0
