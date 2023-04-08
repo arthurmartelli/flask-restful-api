@@ -9,12 +9,24 @@ readme = "README.md"
 python = "^3.11"
 pytest = "^7.2.2"
 autopep8 = "^2.0.2"
+flask = "^2.2.3"
 
+
+[tool.poetry.group.dev.dependencies]
+poethepoet = "^0.19.0"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.poetry.scripts]
-main = "ecommerce.main:main"
-test = "pytest:main"
+[tool.poe.tasks.dev]
+cmd = "flask --app ecommerce.app run --debug"
+help = "Runs the flask app in debug mode"
+
+[tool.poe.tasks.test]
+cmd = "poetry run pytest"
+help = "Runs PyTest"
+
+[tool.poe.tasks.build]
+cmd = "poetry build"
+help = "Builds the project"
